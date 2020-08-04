@@ -1,6 +1,5 @@
 library(future)
 library(promises)
-library(future.apply)
 library(microbenchmark)
 plan(multiprocess)
 
@@ -29,8 +28,8 @@ async_test <- function(n) {
 
 # compare
 microbenchmark(
-    "sequential" = sequential_test(1),
-    "async" = parallel_test(1),
+    "sequential" = sequential_test(10),
+    "async" = async_test(10),
     times = 1
 )
 
